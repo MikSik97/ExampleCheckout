@@ -40,13 +40,20 @@ export default {
                 return;
             }
             if (this.discountAmount !==1){
+                alert("juz wykorzystano kod!")
                 return;
             }
             axios.post('api/discount',{
                 discount: this.discount
             })
             .then(response => {
-                this.dscA = response.data
+                if(response.data[1]===2){
+                    alert("podany kod jest nieaktywny")
+                }
+                if(response.data[1]===3){
+                    alert("podany kod jest błędny")
+                }
+                this.dscA = response.data[0]
                 this.$emit('changeDiscount', this.dscA)
             })
                 .catch( error =>{

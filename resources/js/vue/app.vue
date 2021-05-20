@@ -88,7 +88,8 @@
                this.$refs.registrationForm.submitForm();
                let number = this.makeid();
                if(this.paid === null){
-                   console.log("wybierz płatność")
+                   alert("wybierz płatność")
+                   return;
                }
                 axios.post('/api/new_order',{
                     'user_id': this.userId,
@@ -97,7 +98,7 @@
                     'price' : this.finalPrice,
                     'paid': this.paid,
                 }).then(response=>(
-                    console.log("sukcesik")
+                    alert("Dziękujemy za zamówienie twój numer zamówienia to:"+ number)
                 )).catch( error =>{
                     console.log(error.response.data);
                 })

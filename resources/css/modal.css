@@ -33,3 +33,9 @@
     text-decoration: none;
     cursor: pointer;
 }
+@media all and (min-width: 800px){
+    .modal-content{
+        width: 40%;
+    }
+}
+

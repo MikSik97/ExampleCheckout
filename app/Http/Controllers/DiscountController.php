@@ -40,10 +40,12 @@ class DiscountController extends Controller
         $discount_text = $request->discount["name"];
         $discount = DB::table('discounts')->where('name',$discount_text)->first();
         if($discount &&  $discount->active){
-            return $discount->discount_amount;
+            return [$discount->discount_amount, 1];//zmiana ceny
         }
-        else{
-            return 1;
+        else if($discount && !$discount->active){
+            return [1, 2];//nieaktywny kupon
+        } else{
+            return [1,3];//niepoprawnykupon
         }
     }
 

@@ -2,8 +2,15 @@
 .checkoutContainer {
     display: flex;
     justify-content: center;
+    align-items: flex-start;
     flex-wrap: wrap;
 
+}
+@media all and (max-width: 1190px){
+    .checkoutContainer {
+        flex-direction: column;
+        align-items: center;
+    }
 }
 .checkoutElement{
     width: 350px;
@@ -66,7 +73,17 @@ td {
 }
 .prize{
     text-align: right;
-
-
 }
 
+.tooltip .tooltiptext {
+    visibility: hidden;
+    width: 300px;
+    text-align: left;
+    border-radius: 6px;
+    padding: 5px;
+    background-color: lightskyblue;
+    color: #fff;
+}
+.tooltip:hover .tooltiptext {
+    visibility: visible;
+}

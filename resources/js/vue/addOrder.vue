@@ -42,7 +42,6 @@ export default {
     watch: {
         discountAmount: function () {
             let new_price = this.finalPrice * this.discountAmount
-            console.log(new_price)
             this.$emit("priceChange",new_price )
         }
     },
@@ -57,7 +56,7 @@ export default {
                 this.$emit("newAccount")
 
             } else{
-                console.log("potwierdź regulanim")
+                alert("potwierdź regulanim")
             }
         }
     }

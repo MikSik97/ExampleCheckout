@@ -29,17 +29,21 @@
             <div id="app-container" v-if="checked">
                 <form id="reg_form" method="post" action="/api/register">
                     <input  v-model="fields.email" type="email" placeholder="email" required>
-                    <input v-model="fields.name" type="text" placeholder="imię" required>
-                    <input id="password" v-model="fields.password" type="password" placeholder="hasło" required>
-                    <input id="confirm_password" type="password" placeholder=" potwierdź hasło" required>
+                    <input id="password" v-model="fields.password" type="password" placeholder="hasło" v-on:change="comparePassword" required>
+                    <input id="confirm_password" type="password" placeholder=" potwierdź hasło"v-on:change="comparePassword" required>
                     <span id='message'></span>
+                    <input v-model="fields.name" type="text" placeholder="imię" required>
                     <input v-model="fields.surname" type="text" placeholder="nazwisko" required>
                     <input v-model="fields.street" type="text" placeholder="ulica" required>
                     <input v-model="fields.number" type="text" placeholder="numer mieszkania">
                     <input v-model="fields.postalCode" type="text" placeholder="kod pocztowy" required>
                     <input v-model="fields.city" type="text" placeholder="miasto" required>
                     <input v-model="fields.country" type="text" placeholder="kraj" required>
-                    <input v-model="fields.phone" type="tel" placeholder="telefon" pattern="[0-9]{9}"  required>
+                    <div  class="tooltip">
+                        <input v-model="fields.phone" type="tel" placeholder="telefon" pattern="[0-9]{9}"  required>
+                        <span class="tooltiptext">dziewięcio cyfrowy numer, bez znaków białych</span>
+                    </div>
+
                 </form>
             </div>
         </div>
@@ -74,7 +78,7 @@ export default {
         submitForm(){
             if(this.checked) {
                 if(!document.getElementById('reg_form').checkValidity()){
-                    console.log("coś nie gra")
+                    alert("popraw formularz rejestracji")
                 }else{
                     axios.post('api/registration', {
                         fields: this.fields
@@ -91,6 +95,18 @@ export default {
                 }
             }
         },
+        comparePassword() {
+            if (document.getElementById('password').value ==='') {
+                document.getElementById('message').innerHTML = '';
+            }else if(document.getElementById('password').value === document.getElementById('confirm_password').value) {
+                document.getElementById('message').style.color = 'green';
+                document.getElementById('message').innerHTML = 'hasło zaakceptowane';
+            }
+            else{
+                document.getElementById('message').style.color = 'red';
+                document.getElementById('message').innerHTML = 'rózne hasła';
+            }
+        }
     }
 }
 </script>
