@@ -26,7 +26,7 @@
                     <input type="checkbox" v-model="checked">Stwórz konto
                     <span class="checkmark" ></span>
                 </label>
-            <div id="app-container" v-if="checked">
+            <div v-if="checked">
                 <form id="reg_form" method="post" action="/api/register">
                     <input  v-model="fields.email" type="email" placeholder="email" required>
                     <input id="password" v-model="fields.password" type="password" placeholder="hasło" v-on:change="comparePassword" required>

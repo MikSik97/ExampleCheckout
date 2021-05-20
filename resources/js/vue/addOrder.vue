@@ -11,13 +11,18 @@
                     <td>ilość: 1</td>
                 </tr>
             </table>
+            <div style="padding: 20px">
+
             <div class="line"></div>
             czy wykorzystano kod rabatowy?
                 <p class="prize" v-if="discountAmount!==1"> tak</p>
             <p class="prize" v-if="discountAmount===1"> nie</p>
             <div class="line"></div>
+            Cena dostawy: <p class="prize">{{deliveryPrice}} zł</p>
+            <div class="line"></div>
             Cena końcowa: <p class="prize">{{finalPrice}} zł</p>
             <div class="line"></div>
+            </div>
             <textarea rows="5" placeholder="komentarz">
 
             </textarea>
@@ -38,11 +43,19 @@
 
 <script>
 export default {
-    props: ['products', 'discountAmount', 'finalPrice'],
-    watch: {
+    props: ['products', 'discountAmount','deliveryPrice', 'finalPrice'],
+    watch: {//cena zhardkodowana
         discountAmount: function () {
-            let new_price = this.finalPrice * this.discountAmount
+            let new_price = (( Number(120) +  Number(this.deliveryPrice)) * this.discountAmount).toFixed(2);
+            console.log(new_price + "disc")
+
             this.$emit("priceChange",new_price )
+        },
+        deliveryPrice: function (){
+            let new_price = (( Number(120) + Number(this.deliveryPrice)) * this.discountAmount).toFixed(2);
+            console.log(new_price + "del")
+            parseFloat(new_price).toFixed(2);
+            this.$emit("priceChange",new_price );
         }
     },
     data(){

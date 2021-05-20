@@ -11,9 +11,11 @@
             <select-delivery
             :deliveries="deliveries"
             :payments="payments"
+            :deliveryPrice="deliveryPrice"
             :paid="paid"
             :deliveryId="deliveryId"
-            @paid="paid=$event"/>
+            @paid="paid=$event"
+            @deliveryPrice="deliveryPrice=$event"/>
 
             <select-discount :discountAmount="discountAmount" @changeDiscount="discountAmount = $event"/>
         </div>
@@ -21,6 +23,7 @@
             <add-order
                 :products="products"
                 :discountAmount="discountAmount"
+                :deliveryPrice="deliveryPrice"
                 :finalPrice="finalPrice"
             @newAccount="addOrder()"
             @priceChange="finalPrice=$event"/>
@@ -48,6 +51,7 @@
                 deliveries: [],
                 payments: [],
                 products:[],
+                deliveryPrice: 0,
                 discountAmount: 1,
                 finalPrice: 120,
                 userId: 1,
