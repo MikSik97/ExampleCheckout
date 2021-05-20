@@ -1,0 +1,72 @@
+
+.checkoutContainer {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+
+}
+.checkoutElement{
+    width: 350px;
+    margin: 20px;
+    background-color: aliceblue;
+}
+h2 {
+    padding: 10px;
+    text-align: left;
+    background: sandybrown;
+    color: white;
+}
+p{
+    text-align: center;
+}
+input[type=text],input[type=tel], input[type=email], input[type=password]{
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+textarea {
+    width: 100%;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    margin-top: 6px;
+    margin-bottom: 10px;
+    resize: none;
+}
+button {
+    width: 100%;
+    background-color: red;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+button:hover{
+    background-color: darkred;
+}
+table{
+
+    border-collapse: collapse;
+    width: 100%
+
+}
+td {
+    padding: 10px 20px 10px 20px;
+}
+.line{
+    border-bottom: 1px dotted black;
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+.prize{
+    text-align: right;
+
+
+}
+
