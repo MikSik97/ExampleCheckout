@@ -5,7 +5,7 @@
 Project is created with:
 * Laravel: 8.40.0
 *  PHP 7.4
-* js.vue: 2.6.12
+* Vue.js: 2.6.12
 
 ## Database Seeding
 
