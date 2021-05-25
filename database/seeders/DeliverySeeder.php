@@ -29,11 +29,5 @@ class DeliverySeeder extends Seeder
             "price" => 16.99,
             "type" => true,
         ]);
-        DB::table('addresses')->insert([
-            "country"=>"pl",
-            "city" => "gk",
-            "post_code" => '123',
-            "street" =>"fb"
-        ]);
     }
 }

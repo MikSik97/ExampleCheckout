@@ -47,13 +47,10 @@ export default {
     watch: {//cena zhardkodowana
         discountAmount: function () {
             let new_price = (( Number(120) +  Number(this.deliveryPrice)) * this.discountAmount).toFixed(2);
-            console.log(new_price + "disc")
-
             this.$emit("priceChange",new_price )
         },
         deliveryPrice: function (){
             let new_price = (( Number(120) + Number(this.deliveryPrice)) * this.discountAmount).toFixed(2);
-            console.log(new_price + "del")
             parseFloat(new_price).toFixed(2);
             this.$emit("priceChange",new_price );
         }

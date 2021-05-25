@@ -19,7 +19,7 @@ class CreateUsersTable extends Migration
             $table->string('name');
             $table->string('surname');
             $table->string('password');
-            $table->integer('address_id');
+            $table->bigInteger('address_id')->unsigned();
             $table->foreign('address_id')->references("id")->on('addresses');
             $table ->string('phone_number');
 

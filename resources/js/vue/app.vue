@@ -28,6 +28,7 @@
             @newAccount="addOrder()"
             @priceChange="finalPrice=$event"/>
         </div>
+        {{userId}}
     </div>
 
 </template>
@@ -89,23 +90,27 @@
                     })
             },
             addOrder(){
-               this.$refs.registrationForm.submitForm();
-               let number = this.makeid();
-               if(this.paid === null){
-                   alert("wybierz płatność")
-                   return;
-               }
-                axios.post('/api/new_order',{
-                    'user_id': this.userId,
-                    'order_number': number,
-                    'address_id': this.addressId,
-                    'price' : this.finalPrice,
-                    'paid': this.paid,
-                }).then(response=>(
-                    alert("Dziękujemy za zamówienie twój numer zamówienia to:"+ number)
-                )).catch( error =>{
-                    console.log(error.response.data);
-                })
+                var added =this.$refs.registrationForm.submitForm();
+                console.log(added)
+               if (added){
+                   let number = this.makeid();
+                   if(this.paid === null){
+                       alert("wybierz płatność")
+                       return;
+                   }
+                   console.log("eluwina")
+                    axios.post('/api/new_order',{
+                        'user_id': this.userId,
+                        'order_number': number,
+                        'address_id': this.addressId,
+                        'price' : this.finalPrice,
+                        'paid': this.paid,
+                    }).then(response=>(
+                        alert("Dziękujemy za zamówienie twój numer zamówienia to:"+ number)
+                    )).catch( error =>{
+                        console.log(error.response.data);
+                    })
+                }
             },
             makeid() {
                 var result           = [];

@@ -71,28 +71,40 @@ export default {
                 city:'',
                 country:'',
                 phone:'',
-            }
+            },
+            add: false,
         }
     },
     methods:{
         submitForm(){
             if(this.checked) {
                 if(!document.getElementById('reg_form').checkValidity()){
-                    alert("popraw formularz rejestracji")
+                    alert("popraw formularz rejestracji");
+                    return false;
                 }else{
-                    axios.post('api/registration', {
+                    this.add= axios.post('api/registration', {
                         fields: this.fields
                     })
                         .then(response =>{
-                            var user = response.data[0];
-                            var address = response.data[1];
-                            this.$emit("newUser", user);
-                            this.$emit("newAddress", address);
+                            if(!response.data[0]){
+                                alert("podany email posiada już konto")
+                                return false;
+                            } else{
+                                var user = response.data[0];
+                                var address = response.data[1];
+                                this.$emit("newUser", user);
+                                this.$emit("newAddress", address);
+                                return true;
+                            }
                         }
                     ).catch( error =>{
                         console.log(error.response.data)
                     })
                 }
+                console.log(this.add);
+                return this.add;
+            } else {
+                return true;
             }
         },
         comparePassword() {

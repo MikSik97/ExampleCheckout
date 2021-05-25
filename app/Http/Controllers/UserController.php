@@ -56,8 +56,11 @@ class UserController extends Controller
             $new_user->address_id = $new_address->id;
             $new_user->phone_number = $request->fields['phone'];
             $new_user->save();
+            return [$new_user->id, $new_address->id];
+        } else{
+            return [$new_user-> null];
         }
-        return [$new_user->id, $new_address->id];
+
     }
 
     /**

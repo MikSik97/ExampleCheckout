@@ -16,9 +16,9 @@ class CreateOrdersTable extends Migration
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
             $table->string("order_number")->unique();
-            $table->integer('user_id')->unsigned();
+            $table->bigInteger('user_id')->unsigned();
             $table->foreign('user_id')->references('id')->on('users');
-            $table->integer('address_id');
+            $table->bigInteger('address_id')->unsigned();
             $table->foreign('address_id')->references('id')->on('addresses');
             $table->double("price");
             $table->boolean("paid");// czy zapłacone z góry
